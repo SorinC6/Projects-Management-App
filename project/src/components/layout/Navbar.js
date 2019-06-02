@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import SigninLinks from "./SigninLinks";
+import SignoutLinks from "./SignoutLinks";
 
 const Navbar = () => {
   return (
@@ -10,6 +11,7 @@ const Navbar = () => {
           MarioPlan
         </Link>
         <SigninLinks />
+        <SignoutLinks />
       </div>
     </nav>
   );
