@@ -1,5 +1,5 @@
 const initState = {
-  project: [
+  projects: [
     {
       id: "1",
       title: "Frontend BuildWeek",
