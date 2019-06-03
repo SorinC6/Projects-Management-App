@@ -1,7 +1,7 @@
 const initState = {};
 
-const authReducer = (state = initState, action) => {
+const projectReducer = (state = initState, action) => {
   return state;
 };
 
-export default authReducer;
+export default projectReducer;
