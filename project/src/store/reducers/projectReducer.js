@@ -19,7 +19,15 @@ const initState = {
 };
 
 const projectReducer = (state = initState, action) => {
-  return state;
+  switch (action.type) {
+    case "CREATE_PROJECT":
+      console.log("created project ", action.payload);
+      return state;
+    case "CREATE_PROJECT_FAIL":
+      console.log("PROJECT ERROR ", action.payload);
+    default:
+      return state;
+  }
 };
 
 export default projectReducer;
