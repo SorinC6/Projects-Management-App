@@ -4,20 +4,25 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter as Router } from "react-router-dom";
-import { createStore, applyMiddleware } from "redux";
+import { createStore, applyMiddleware, compose } from "redux";
 import rootReducer from "./store/reducers/rootReducer";
 import { Provider } from "react-redux"; //binding layer
 import thunk from "redux-thunk";
-import { getFirestore } from "redux-firestore";
-import { getFirebase } from "react-redux-firebase";
+import { getFirestore, reduxFirestore } from "redux-firestore";
+import { getFirebase, reactReduxFirebase } from "react-redux-firebase";
+import fbConfig from "./config/fbConfig";
 
 const store = createStore(
   rootReducer,
-  applyMiddleware(
-    thunk.withExtraArgument({
-      getFirestore,
-      getFirebase
-    })
+  compose(
+    applyMiddleware(
+      thunk.withExtraArgument({
+        getFirestore,
+        getFirebase
+      })
+    ),
+    reduxFirestore(fbConfig),
+    reactReduxFirebase(fbConfig)
   )
 );
 
