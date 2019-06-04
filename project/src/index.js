@@ -17,8 +17,8 @@ const store = createStore(
   compose(
     applyMiddleware(
       thunk.withExtraArgument({
-        getFirestore,
-        getFirebase
+        getFirebase,
+        getFirestore
       })
     ),
     reduxFirestore(fbConfig),
