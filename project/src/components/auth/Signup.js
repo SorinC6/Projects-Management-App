@@ -8,7 +8,7 @@ export class Signup extends Component {
     email: "",
     password: "",
     firstName: "",
-    lastName: ""
+    lastName: "",
   };
 
   handleChange = e => {
@@ -19,11 +19,13 @@ export class Signup extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log(this.state);
+    //console.log(this.state);
+    this.props.signUp(this.state)
   };
   render() {
-    const { auth } = this.props;
+    const { auth, authError } = this.props;
     if (auth.uid) return <Redirect to="/" />;
+    //console.log(authError)
     return (
       <div className="container">
         <form onSubmit={this.handleSubmit} className="white">
@@ -46,6 +48,9 @@ export class Signup extends Component {
           </div>
           <div className="input-field">
             <button className="btn pink lighten-1 z-depth-0">Login</button>
+            <div className="red-text center">
+              {authError && <p>{authError}</p>}
+            </div>
           </div>
         </form>
       </div>
@@ -55,10 +60,13 @@ export class Signup extends Component {
 
 const mapStateToProps = state => {
   return {
-    auth: state.firebase.auth
+    auth: state.firebase.auth,
+    authError: state.auth.authError
   };
 };
 
+const mapDispatchToprops = {
+  signUp
+};
 
-
-export default connect(mapStateToProps)(Signup);
+export default connect(mapStateToProps, mapDispatchToprops)(Signup);
