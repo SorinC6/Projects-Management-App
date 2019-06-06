@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "firebase": "^6.1.0",
+    "firebase-tools": "^6.11.0",
     "i": "^0.3.6",
     "materialize-css": "^1.0.0-rc.2",
     "moment": "^2.24.0",
