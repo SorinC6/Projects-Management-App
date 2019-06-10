@@ -9,12 +9,12 @@ exports.helloWorld = functions.https.onRequest((request, response) => {
     response.send("Hello from Sorin!");
 });
 
-const createNotification = notification => {
-    return admin.firestore
+const createNotification = (notification => {
+    return admin.firestore()
         .collection("notifications")
         .add(notification)
         .then(doc => console.log('notification added ', doc)); //36 ----
-};
+});
 
 exports.projectCreated = functions.firestore
     .document("projects/{projectId}")
